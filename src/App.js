@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
+import React, { useState } from 'react'
+import ImageSearch from './imagesearch/ImageSearch';
+import Bookmarks from './bookmarks/Bookmarks';
+import Input from './input/Input';
 function App() {
+  const[bookmark,setBookmark]=useState({})
+  const[searchquery,setSearchquery]=useState("")
+  const [images,setImages]=useState({})
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='header-wrapper'>
+      <h2>React Photo Search</h2>
+      <Bookmarks bookmark={bookmark}/>
+      </div>
+    <Input searchquery={searchquery} setSearchquery={setSearchquery}/>
+    <ImageSearch images={images} setImages={setImages} searchquery={searchquery} bookmark={bookmark} setBookmark={setBookmark}/>
     </div>
   );
 }
